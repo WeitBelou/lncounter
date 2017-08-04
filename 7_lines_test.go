@@ -1,20 +1,20 @@
 package lncounter
 
 import (
-    "testing"
-    "os"
+	"testing"
+	"os"
 )
 
 func Test7Lines(t *testing.T) {
-    file, _ := os.Open("./7_lines.go")
+	file, _ := os.Open("./7_lines.go")
 
-    nLines, err := CountLines(file)
+	nLines, err := CountLines(file)
 
-    if err != nil {
-        t.Error(err)
-    }
+	if err != nil {
+		t.Error(err)
+	}
 
-    if nLines != 7 {
-        t.Error()
-    }
+	if nLines != 7 {
+		t.Error()
+	}
 }
