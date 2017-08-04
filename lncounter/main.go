@@ -24,10 +24,8 @@ func processFile(filename string) {
 }
 
 func processFiles(files []string) {
-	nFiles := len(files)
-
-	for i := 0; i < nFiles; i++ {
-		processFile(files[i])
+	for _, filename := range files {
+		processFile(filename)
 	}
 }
 
