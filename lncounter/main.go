@@ -10,21 +10,20 @@ func processFile(filename string) {
 	file, err := os.Open(filename)
 	if err != nil {
 		log.Print(err)
-		os.Exit(1)
+		return
 	}
 
 	nLines, err := lncounter.CountLines(file)
 
 	if err != nil {
 		log.Print(err)
-		os.Exit(1)
 	}
 	println(nLines, filename)
 
 	file.Close()
 }
 
-func processSeveralFiles(files []string) {
+func processFiles(files []string) {
 	nFiles := len(files)
 
 	for i := 0; i < nFiles; i++ {
@@ -32,19 +31,26 @@ func processSeveralFiles(files []string) {
 	}
 }
 
+func processStdIn() {
+	file := os.Stdin
+	nLines, err := lncounter.CountLines(file)
+
+	if err != nil {
+		log.Print(err)
+	}
+	println(nLines)
+}
+
 func main() {
 	nArgs := len(os.Args)
-	if nArgs == 1 {
-		log.Print("Unexpected number of arguments", nArgs-1)
-		os.Exit(1)
-	}
+	nArgsWithoutProgramName := nArgs - 1
 
-	filenames := os.Args[1:]
-	nFiles := len(filenames)
-
-	if nFiles == 1 {
-		processFile(filenames[0])
-	} else {
-		processSeveralFiles(filenames)
+	switch nArgsWithoutProgramName {
+	case 0:
+		processStdIn()
+	case 1:
+		processFile(os.Args[1])
+	default:
+		processFiles(os.Args[1:])
 	}
 }
