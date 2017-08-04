@@ -18,8 +18,9 @@ func processFile(filename string) {
 
 	if err != nil {
 		log.Print(err)
+		return
 	}
-	println(nLines, filename)
+	log.Print(nLines, filename)
 }
 
 func processFiles(files []string) {
@@ -34,8 +35,9 @@ func processStdIn() {
 
 	if err != nil {
 		log.Print(err)
+		return
 	}
-	println(nLines)
+	log.Print(nLines)
 }
 
 func main() {
