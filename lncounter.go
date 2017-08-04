@@ -26,7 +26,3 @@ func CountLines(r io.Reader) (int, error) {
 		}
 	}
 }
-
-func main() {
-
-}

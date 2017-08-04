@@ -6,7 +6,7 @@ import (
 )
 
 func Test7Lines(t *testing.T) {
-	file, _ := os.Open("./7_lines.txt")
+	file, _ := os.Open("./6_lines.txt")
 
 	nLines, err := CountLines(file)
 
@@ -14,8 +14,9 @@ func Test7Lines(t *testing.T) {
 		t.Error("Someting happens:", err)
 	}
 
-	if nLines != 7 {
-		t.Error("Expected 7 lines but", nLines, "given")
+	const NLines = 6
+	if nLines != NLines {
+		t.Error("Expected", NLines, "lines but", nLines, "given")
 	}
 
 	file.Close()
