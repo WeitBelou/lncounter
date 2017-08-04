@@ -11,7 +11,7 @@ func CountLines(r io.Reader) (int, error) {
 
 	const LineSeparator = "\n"
 
-	nLines := 1 // Empty file has one line
+	nLines := 0
 
 	for {
 		nBytes, err := r.Read(buffer)
