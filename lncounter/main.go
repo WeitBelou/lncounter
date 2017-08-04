@@ -7,6 +7,11 @@ import (
 )
 
 func main() {
+	nArgs := len(os.Args)
+	if nArgs == 1 {
+		log.Print("Unexpected number of arguments", nArgs-1)
+		os.Exit(1)
+	}
 	filename := os.Args[1]
 
 	file, err := os.Open(filename)
