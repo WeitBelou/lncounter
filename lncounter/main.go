@@ -12,6 +12,7 @@ func processFile(filename string) {
 		log.Print(err)
 		return
 	}
+	defer file.Close()
 
 	nLines, err := lncounter.CountLines(file)
 
@@ -19,8 +20,6 @@ func processFile(filename string) {
 		log.Print(err)
 	}
 	println(nLines, filename)
-
-	file.Close()
 }
 
 func processFiles(files []string) {
